@@ -2,6 +2,8 @@ import * as React from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
+import ProductDetail from "../ProductDetail/ProductDetail"
+import NotFound from "../NotFound/NotFound"
 import "./App.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import axios from 'axios'
@@ -102,12 +104,13 @@ export default function App() {
           {/* YOUR CODE HERE! */}
           {/* <ProductDetail/> */}
           <Routes>
-            <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart}/> ,<Navbar/>, <Sidebar/>}/>
-            <Route path="/products/:productId" element={<Navbar/>, <Sidebar/>}/>
+            <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart}/>}/>
+            <Route path="/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemFromCart}/>}/>
             {/* <NotFound/> */}
-            <Route path="*" element = {<Navbar/>, <Sidebar/>}/>
+            <Route path="*" element = {<NotFound/>, <Navbar/>, <Sidebar/>}/>
           </Routes>
           <Navbar />
+          <Sidebar/>
         </main>
       </BrowserRouter>
     </div>
