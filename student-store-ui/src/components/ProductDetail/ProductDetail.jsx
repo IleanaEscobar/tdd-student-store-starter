@@ -31,7 +31,7 @@ export default function ProductDetail(props) {
       }
     return (
         <div className="product-detail">
-            <ProductView></ProductView>
+            <ProductView product={product} productId={product.id} quantity={product.quantity} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}></ProductView>
         </div>
     )
 }
