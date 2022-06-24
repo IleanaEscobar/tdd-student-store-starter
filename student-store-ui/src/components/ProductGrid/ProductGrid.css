@@ -4,5 +4,6 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     grid-gap: 10px;
-    z-index: -200;
+    margin-left: 115px;
+    /* z-index: -200; */
 }

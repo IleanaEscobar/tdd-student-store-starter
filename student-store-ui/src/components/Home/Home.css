@@ -5,18 +5,18 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  margin-top: -95px;
+  margin-top: 250px;
   color:#42C2FF;
-  z-index: 200;
+  /* z-index: 200; */
 }
-a {
+/* a {
   color:#42C2FF;
-}
+} */
 
-.header {
+/* .header {
   display: flex;
   justify-content: center;
   margin-bottom: 200px;
   margin-right: -20px;
   margin-top: 20px;
-}
+} */

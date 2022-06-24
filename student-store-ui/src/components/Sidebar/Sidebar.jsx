@@ -14,9 +14,9 @@ export default function Sidebar(props) {
       >
         Sidebar
       </button>
-      {props.isOpen == true
+      {props.isOpen
         ? (
-          <div>
+          <div className="forms">
             <ShoppingCart
               isOpen={props.isOpen}
               products={props.products}

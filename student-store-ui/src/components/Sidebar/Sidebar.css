@@ -2,6 +2,16 @@
     display: flex;
     background-color:#42C2FF;
     color:#EFFFFD;
-    margin-top: 20px;
+    margin-top: 60px;
     z-index: 500;
+    width: 150px;
+}
+
+.sidebar {
+    position:fixed;
+    top: 50px;
+    left: 0px;
+    height: calc(100vh - 50px);
+    background-color:#85F4FF;
+    max-width: 360px;
 }

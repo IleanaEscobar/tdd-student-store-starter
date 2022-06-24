@@ -1,13 +1,14 @@
 .Hero {
     display: flex;
     justify-content: left;
-    margin-top: -235px;
+    margin-top: -200px;
     width: 20%;
     /* max-width: 120px; */
     margin-left: 89%;
     /* max-width: 50%;
     height:100px; */
-    z-index: 100;
+    /* z-index: 100; */
+    margin-bottom: 70px;
 }
 .Intro {
     margin: 20px;
