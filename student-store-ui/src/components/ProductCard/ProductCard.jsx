@@ -14,7 +14,7 @@ export default function ProductCard(props) {
     };
 
   return (
-    <div>
+    <div className="product-card">
       <p className="product-name">{props.product.name}</p>
       {/* remember to format price later */}
       <p className="product-price">{props.product.price}</p>
@@ -24,7 +24,7 @@ export default function ProductCard(props) {
       {/* link might need : */}
       <div className="media">
         <Link to={"/products/" + props.product.id}>
-          <img src={props.product.image} alt="product image" />
+          <img src={props.product.image} height = "250" width = "250"alt="product image" />
         </Link>
       </div>
       <button

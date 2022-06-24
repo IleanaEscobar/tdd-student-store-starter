@@ -1,0 +1,7 @@
+.toggle-button {
+    display: flex;
+    background-color:#42C2FF;
+    color:#EFFFFD;
+    margin-top: 20px;
+    z-index: 500;
+}

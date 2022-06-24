@@ -1,0 +1,7 @@
+.navbar {
+    background-color: #B8FFF9;
+    color: #42C2FF;
+    height: 50px;
+    width: 100%;
+    z-index: 10;
+}
