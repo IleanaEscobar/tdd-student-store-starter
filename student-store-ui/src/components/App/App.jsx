@@ -87,7 +87,7 @@ export default function App() {
       }
     }
 
-    if (quantity == 0) {
+    if (quantity == 1) {
       setShoppingCart(shoppingCart.filter((item) => item.itemId != productId));
     } else {
       let aux = [];
