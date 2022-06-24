@@ -18,14 +18,15 @@ export default function ShoppingCart(props) {
   return (
     <div className="shopping-cart">
       <div className="cart">
+          <p id="shopping-cart-header">Shopping Cart:</p>
           {
               props.shoppingCart.map((product, indx) => (
-            <div key={product.itemId}>
+            <div className="product-display" key={product.itemId}>
             <p className="cart-product-name">
             {findName(product.itemId)}
               </p>
               <p className="cart-product-quantity">
-              Items amount: {product.quantity}
+              : {product.quantity}
               </p>
               </div>
               ))

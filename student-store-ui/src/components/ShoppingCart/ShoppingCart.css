@@ -1,0 +1,10 @@
+.product-display{
+    display: flex;
+    max-height: 20px;
+    margin: 20px;
+    margin-left: 40px;
+}
+
+#shopping-cart-header {
+    margin-bottom: -10px;
+}
