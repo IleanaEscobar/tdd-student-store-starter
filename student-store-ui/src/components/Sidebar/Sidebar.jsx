@@ -3,8 +3,6 @@ import "./Sidebar.css"
 import ShoppingCart from "../ShoppingCart/ShoppingCart"
 import CheckoutForm from "../CheckoutForm/CheckoutForm"
 
-// expected props == isOpen, shoppingCart, products, checkoutForm, handleOnCheckourFormChange
-// , handleOnSubmitCheckoutFrom, handleOnToggle
 export default function Sidebar(props) {
   return (
     <section className="sidebar">
