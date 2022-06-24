@@ -4,6 +4,7 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 export default function Sidebar(props) {
+  console.log("price here side:" + props.price);
   return (
     <section className="sidebar">
       {/* <p>Sidebar</p> */}
@@ -19,6 +20,7 @@ export default function Sidebar(props) {
         ? (
           <div className="forms">
             <ShoppingCart
+              price={props.price}
               isOpen={props.isOpen}
               products={props.products}
               shoppingCart={props.shoppingCart}

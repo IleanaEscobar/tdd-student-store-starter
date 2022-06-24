@@ -18,6 +18,7 @@ export default function App() {
   const [success, setSuccess] = React.useState();
   const [categoryClicked, setCategoryClicked] = React.useState(false);
   const [currentCat, setCurrentCat] = React.useState();
+  const [price, setPrice] = React.useState(0);
   // const [inCart, setInCart] = React.useState(false)
   //   The itemId field should store the id of the item being purchased.
   //   The quantity field should store a number representing how many of that item the user is purchasing.
@@ -60,6 +61,10 @@ export default function App() {
   // Add price
 
   function handleAddItemToCart(productId) {
+    var product = products.find((item)=> item.id == productId)
+    console.log("price " + price)
+    setPrice(price + product.price)
+    console.log("price " + price)
     let quantity = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {
@@ -93,6 +98,7 @@ export default function App() {
   }
 
   function handleRemoveItemFromCart(productId) {
+    var product = products.find((item)=> item.id == productId)
     let quantity = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {
@@ -101,8 +107,12 @@ export default function App() {
     }
 
     if (quantity == 1) {
+      setPrice(price - product.price)
       setShoppingCart(shoppingCart.filter((item) => item.itemId != productId));
     } else {
+      if (quantity > 1) {
+        setPrice(price - product.price)
+      }
       let aux = [];
       for (let i = 0; i < shoppingCart.length; i++) {
         if (shoppingCart[i].itemId != productId) {
@@ -156,6 +166,7 @@ export default function App() {
           {/* <ProductDetail/> */}
           <Navbar />
           <Sidebar
+          price={price}
             isOpen={isOpen}
             shoppingCart={shoppingCart}
             products={products}
@@ -198,6 +209,7 @@ export default function App() {
                 (
                   <Sidebar
                     // handleSearch={handleSearch}
+                    price={price}
                     isOpen={isOpen}
                     shoppingCart={shoppingCart}
                     products={products}
