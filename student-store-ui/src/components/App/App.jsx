@@ -56,7 +56,6 @@ export default function App() {
     }
 
     if (quantity == 0) {
-      // Crear el elemento en el shopping cart
       setShoppingCart((prev) => [
         ...prev,
         {
@@ -65,7 +64,6 @@ export default function App() {
         }
       ]);
     } else {
-      // Editar
       let aux = [];
       for (let i = 0; i < shoppingCart.length; i++) {
         if (shoppingCart[i].itemId != productId) {
@@ -83,16 +81,30 @@ export default function App() {
   }
 
   function handleRemoveItemFromCart(productId) {
-    var currentItem = {};
-    console.log(shoppingCart);
-    shoppingCart.map(
-      (item, indx) => (currentItem = item)
-    );
-    if (currentItem.quantity == 1) {
-      setShoppingCart(shoppingCart.filter((item) => item.itemId != productId));
+    let quantity = 0;
+    for (let i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId == productId) {
+        quantity = shoppingCart[i].quantity;
+      }
     }
-    if (currentItem.quantity > 1) {
-      currentItem.quantity -= 1;
+
+    if (quantity == 0) {
+      setShoppingCart(shoppingCart.filter((item) => item.itemId != productId))
+    }
+    else {
+      let aux = [];
+      for (let i = 0; i < shoppingCart.length; i++) {
+        if (shoppingCart[i].itemId != productId) {
+          aux.push(shoppingCart[i])
+        } else {
+          aux.push({
+            itemId: productId,
+            quantity: shoppingCart[i].quantity - 1
+          })
+        }
+      }
+
+      setShoppingCart(aux);
     }
   }
 
