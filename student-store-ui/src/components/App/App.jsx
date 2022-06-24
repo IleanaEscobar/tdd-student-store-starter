@@ -15,6 +15,8 @@ export default function App() {
   const [isFetching, setIsFetching] = React.useState(false);
   const [error, setError] = React.useState("");
   const [isOpen, setIsOpen] = React.useState(false);
+  // const [searchClicked, setSearchClicked] = React.useState(false);
+  // const [currentSearch, setCurrentSearch] = React.useState("default");
   const [success, setSuccess] = React.useState();
   const [categoryClicked, setCategoryClicked] = React.useState(false);
   const [currentCat, setCurrentCat] = React.useState();
@@ -48,12 +50,20 @@ export default function App() {
     setIsOpen(isOpen ? false : true);
   }
 
+  // function handleSearchChange(search) {
+  //   if (search != "default") {
+  //     setSearchClicked(true);
+  //     setCurrentSearch(search);
+  //   } else {
+  //     setSearchClicked(false);
+  //   }
+  // }
+
   function handleCategoryChange(cat) {
-    if (cat != 'all categories') {
+    if (cat != "all categories") {
       setCategoryClicked(true);
       setCurrentCat(cat);
-    }
-    else{
+    } else {
       setCategoryClicked(false);
     }
   }
@@ -61,10 +71,10 @@ export default function App() {
   // Add price
 
   function handleAddItemToCart(productId) {
-    var product = products.find((item)=> item.id == productId)
-    console.log("price " + price)
-    setPrice(price + product.price)
-    console.log("price " + price)
+    var product = products.find((item) => item.id == productId);
+    console.log("price " + price);
+    setPrice(price + product.price);
+    console.log("price " + price);
     let quantity = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {
@@ -98,7 +108,7 @@ export default function App() {
   }
 
   function handleRemoveItemFromCart(productId) {
-    var product = products.find((item)=> item.id == productId)
+    var product = products.find((item) => item.id == productId);
     let quantity = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {
@@ -107,11 +117,11 @@ export default function App() {
     }
 
     if (quantity == 1) {
-      setPrice(price - product.price)
+      setPrice(price - product.price);
       setShoppingCart(shoppingCart.filter((item) => item.itemId != productId));
     } else {
       if (quantity > 1) {
-        setPrice(price - product.price)
+        setPrice(price - product.price);
       }
       let aux = [];
       for (let i = 0; i < shoppingCart.length; i++) {
@@ -133,6 +143,11 @@ export default function App() {
     console.log("checkOut = " + checkoutForm.name + " " + checkoutForm.value);
   }
 
+  // important :)
+  if(products.length==0) {
+    return <div>Loading...</div>
+  }
+
   async function handleOnSubmitCheckoutForm() {
     console.log(checkoutForm.value);
     try {
@@ -140,6 +155,7 @@ export default function App() {
         user: { name: checkoutForm.name, email: checkoutForm.value },
         shoppingCart: shoppingCart,
       });
+      setPrice(0)
       setShoppingCart([]);
       setCheckoutForm({ name: "", value: 0 });
       setSuccess(true);
@@ -166,7 +182,7 @@ export default function App() {
           {/* <ProductDetail/> */}
           <Navbar />
           <Sidebar
-          price={price}
+            price={price}
             isOpen={isOpen}
             shoppingCart={shoppingCart}
             products={products}
@@ -181,6 +197,9 @@ export default function App() {
               path="/"
               element={
                 <Home
+                  // handleSearchChange={handleSearchChange}
+                  // searchClicked={searchClicked}
+                  // currentSearch={currentSearch}
                   currentCat={currentCat}
                   categoryClicked={categoryClicked}
                   handleCategoryChange={handleCategoryChange}

@@ -7,7 +7,7 @@ import axios from 'axios'
 const URL = 'https://codepath-store-api.herokuapp.com/store/'
 
 export default function ProductDetail(props) {
-    const [product, setProduct] = React.useState({})
+    const [product, setProduct] = React.useState(0)
     const params = useParams();
 
     React.useEffect(async () => {

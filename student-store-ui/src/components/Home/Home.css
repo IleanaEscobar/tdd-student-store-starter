@@ -26,7 +26,11 @@
   background-color: #42c2ff;
   border-width: 0px;
   border-radius: 10px;
-  /* width: 100px; */
+}
+
+.search-bar{
+  margin-left: 46.4%;
+  margin-bottom: 50px;
 }
 
 /* a {

@@ -3,6 +3,7 @@ import "./ProductCard.css";
 import { Link } from "react-router-dom";
 
 export default function ProductCard(props) {
+  var price = props.product.price
 
     const getQuantity = () => {
         for (let i = 0; i < props.shoppingCart.length; i++) {
@@ -17,7 +18,7 @@ export default function ProductCard(props) {
     <div className="product-card">
       <p className="product-name">{props.product.name}</p>
       {/* remember to format price later */}
-      <p className="product-price">{props.product.price}</p>
+      <p className="product-price">${price.toFixed(2)}</p>
       {props.showDescription ? (
         <p className="product-description">{props.product.description}</p>
       ) : null}
