@@ -16,6 +16,8 @@ export default function App() {
   const [error, setError] = React.useState("");
   const [isOpen, setIsOpen] = React.useState(false);
   const [success, setSuccess] = React.useState();
+  const [categoryClicked, setCategoryClicked] = React.useState(false);
+  const [currentCat, setCurrentCat] = React.useState();
   // const [inCart, setInCart] = React.useState(false)
   //   The itemId field should store the id of the item being purchased.
   //   The quantity field should store a number representing how many of that item the user is purchasing.
@@ -29,6 +31,7 @@ export default function App() {
     try {
       async function fetchData() {
         const response = await axios(URL);
+        console.log(response.data.products);
         setProducts(response.data.products);
       }
 
@@ -42,6 +45,16 @@ export default function App() {
 
   function handleOnToggle() {
     setIsOpen(isOpen ? false : true);
+  }
+
+  function handleCategoryChange(cat) {
+    if (cat != 'all categories') {
+      setCategoryClicked(true);
+      setCurrentCat(cat);
+    }
+    else{
+      setCategoryClicked(false);
+    }
   }
 
   // Add price
@@ -111,11 +124,11 @@ export default function App() {
   }
 
   async function handleOnSubmitCheckoutForm() {
-    console.log(checkoutForm.value)
+    console.log(checkoutForm.value);
     try {
       await axios.post(URL, {
         user: { name: checkoutForm.name, email: checkoutForm.value },
-        shoppingCart: shoppingCart
+        shoppingCart: shoppingCart,
       });
       setShoppingCart([]);
       setCheckoutForm({ name: "", value: 0 });
@@ -129,6 +142,12 @@ export default function App() {
     }
     // return <p className="error">We're sorry we had trouble loading your checkout:(.</p>
   }
+
+  // async function handleSearch() {
+  //   try {
+
+  //   }
+  // }
   return (
     <div className="app">
       <BrowserRouter>
@@ -151,6 +170,9 @@ export default function App() {
               path="/"
               element={
                 <Home
+                  currentCat={currentCat}
+                  categoryClicked={categoryClicked}
+                  handleCategoryChange={handleCategoryChange}
                   shoppingCart={shoppingCart}
                   products={products}
                   handleAddItemToCart={handleAddItemToCart}
@@ -175,6 +197,7 @@ export default function App() {
                 (<Navbar />),
                 (
                   <Sidebar
+                    // handleSearch={handleSearch}
                     isOpen={isOpen}
                     shoppingCart={shoppingCart}
                     products={products}

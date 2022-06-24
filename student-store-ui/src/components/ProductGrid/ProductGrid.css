@@ -4,6 +4,6 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     grid-gap: 10px;
-    margin-left: 115px;
+    margin-left: 142px;
     /* z-index: -200; */
 }

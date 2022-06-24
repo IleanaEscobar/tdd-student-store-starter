@@ -14,6 +14,7 @@ export default function Sidebar(props) {
       >
         Sidebar
       </button>
+      {/* <input onClick={props.handleSearch} className="search-bar" type="submit">Search...</input> */}
       {props.isOpen
         ? (
           <div className="forms">
