@@ -7,8 +7,8 @@ import axios from 'axios'
 const URL = 'https://codepath-store-api.herokuapp.com/store/'
 
 export default function ProductDetail(props) {
-    const [product, setProduct] = React.useState()
-    const {productId} = useParams();
+    const [product, setProduct] = React.useState({})
+    const params = useParams();
 
     // const fetchProductDetail = async () => {
     //     const response = await axios
@@ -53,24 +53,18 @@ export default function ProductDetail(props) {
     //     fetchData()
     // }, [])
 
-
-    React.useEffect(() => {
+    React.useEffect(async () => {
         try {
-            getData(productId)
-            console.log(productId)
-          async function fetchData() {
-          const response = await axios.get('https://codepath-store-api.herokuapp.com/store/${productId}')
-          console.log("response: " + response)
+        //   async function fetchData() {
+          const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/${params.productId}`)
+          console.log("response: " + JSON.stringify(response.data.product))
           setProduct(response.data.product)
         }
-        React.useEffect(() => {
-        fetchData();
+        catch(e){
+            console.log(e)
+        }
+
     }, [])
-        }
-        catch {
-            setProduct(null)
-        }
-      }, [])
 
       if(product==0) {
           return(<h1 className="loading">Loading...</h1>)

@@ -40,7 +40,7 @@ export default function ProductCard(props) {
         -
       </button>
       {
-        (getQuantity() > 0)?
+        (props.shoppingCart && getQuantity() > 0)?
         (<p className="product-quantity" >{getQuantity()}</p>) : null
       }
     </div>
