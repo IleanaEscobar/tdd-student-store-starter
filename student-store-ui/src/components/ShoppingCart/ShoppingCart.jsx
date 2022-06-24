@@ -7,29 +7,29 @@ export default function ShoppingCart(props) {
   var currentQ = [];
   var names = [];
 
-  props.shoppingCart.map(
-    (item, indx) => (currentIds.push(item.itemId), currentQ.push(item.quantity))
-  );
-  props.products.map((item, indx) => {
-    for (let i = 0; i < props.shoppingCart.length; i++) {
-      item.id == currentIds[i] ? names.push(item.name) : null;
-    }
-  });
+  function findName(id) {
+      var product = props.products.find((item) => item.id == id)
+      return(
+          product.name
+      )
+  }
   console.log(names);
 
   return (
     <div className="shopping-cart">
       <div className="cart">
-        {names.map((name, indx) => (
-            (currentQ[indx] > 0)?(<p className="cart-product-name" key={indx}>
-            {name}
-          </p>): null
-        ))}
-        {currentQ.map((q, indx) => (
-            (q > 0)? (<p className="cart-product-quantity" key={indx}>
-            Items amount: {q}
-          </p>): null
-        ))}
+          {
+              props.shoppingCart.map((product, indx) => (
+            <div key={product.itemId}>
+            <p className="cart-product-name">
+            {findName(product.itemId)}
+              </p>
+              <p className="cart-product-quantity">
+              Items amount: {product.quantity}
+              </p>
+              </div>
+              ))
+          }
       </div>
       {props.shoppingCart.length == 0 ? (
         <p className="notification">
