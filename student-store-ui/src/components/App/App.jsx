@@ -21,15 +21,14 @@ export default function App() {
   //   The quantity field should store a number representing how many of that item the user is purchasing.
   const [shoppingCart, setShoppingCart] = React.useState([]);
   const [checkoutForm, setCheckoutForm] = React.useState({
-    name: "",
-    value: 0,
+    name: "Fake Name",
+    value: "example@email.com",
   });
 
   React.useEffect(() => {
     try {
       async function fetchData() {
         const response = await axios(URL);
-        console.log(response.data.products);
         setProducts(response.data.products);
       }
 
@@ -60,19 +59,19 @@ export default function App() {
         ...prev,
         {
           itemId: productId,
-          quantity: 1
-        }
+          quantity: 1,
+        },
       ]);
     } else {
       let aux = [];
       for (let i = 0; i < shoppingCart.length; i++) {
         if (shoppingCart[i].itemId != productId) {
-          aux.push(shoppingCart[i])
+          aux.push(shoppingCart[i]);
         } else {
           aux.push({
             itemId: productId,
-            quantity: shoppingCart[i].quantity + 1
-          })
+            quantity: shoppingCart[i].quantity + 1,
+          });
         }
       }
 
@@ -89,34 +88,34 @@ export default function App() {
     }
 
     if (quantity == 0) {
-      setShoppingCart(shoppingCart.filter((item) => item.itemId != productId))
-    }
-    else {
+      setShoppingCart(shoppingCart.filter((item) => item.itemId != productId));
+    } else {
       let aux = [];
       for (let i = 0; i < shoppingCart.length; i++) {
         if (shoppingCart[i].itemId != productId) {
-          aux.push(shoppingCart[i])
+          aux.push(shoppingCart[i]);
         } else {
           aux.push({
             itemId: productId,
-            quantity: shoppingCart[i].quantity - 1
-          })
+            quantity: shoppingCart[i].quantity - 1,
+          });
         }
       }
-
       setShoppingCart(aux);
     }
   }
 
   function handleOnCheckoutFormChange(name, value) {
     setCheckoutForm({ name: name, value: value });
+    console.log("checkOut = " + checkoutForm.name + " " + checkoutForm.value);
   }
 
   async function handleOnSubmitCheckoutForm() {
+    console.log(checkoutForm.value)
     try {
       await axios.post(URL, {
-        user: checkoutForm,
-        shoppingCart: shoppingCart,
+        user: { name: checkoutForm.name, email: checkoutForm.value },
+        shoppingCart: shoppingCart
       });
       setShoppingCart([]);
       setCheckoutForm({ name: "", value: 0 });
@@ -124,7 +123,8 @@ export default function App() {
       // return(
       //   <p className="success">Success!</p>
       // )
-    } catch {
+    } catch (e) {
+      console.log(e);
       console.log("error");
     }
     // return <p className="error">We're sorry we had trouble loading your checkout:(.</p>
