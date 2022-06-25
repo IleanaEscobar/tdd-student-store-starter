@@ -12,12 +12,9 @@ const URL = "https://codepath-store-api.herokuapp.com/store";
 
 export default function App() {
   const [products, setProducts] = React.useState([]);
-  const [isFetching, setIsFetching] = React.useState(false);
   const [error, setError] = React.useState("");
   const [isOpen, setIsOpen] = React.useState(false);
   const [success, setSuccess] = React.useState();
-  const [categoryClicked, setCategoryClicked] = React.useState(false);
-  const [currentCat, setCurrentCat] = React.useState();
   const [price, setPrice] = React.useState(0);
   const [receiptList, setReceiptList] = React.useState([]);
   const [receiptPrice, setReceiptPrice] = React.useState(0);
@@ -44,15 +41,6 @@ export default function App() {
 
   function handleOnToggle() {
     setIsOpen(isOpen ? false : true);
-  }
-
-  function handleCategoryChange(cat) {
-    if (cat != "all categories") {
-      setCategoryClicked(true);
-      setCurrentCat(cat);
-    } else {
-      setCategoryClicked(false);
-    }
   }
 
   function handleAddItemToCart(productId) {
@@ -170,9 +158,6 @@ export default function App() {
               path="/"
               element={
                 <Home
-                  currentCat={currentCat}
-                  categoryClicked={categoryClicked}
-                  handleCategoryChange={handleCategoryChange}
                   shoppingCart={shoppingCart}
                   products={products}
                   handleAddItemToCart={handleAddItemToCart}

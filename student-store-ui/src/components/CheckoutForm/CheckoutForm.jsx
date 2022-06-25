@@ -42,16 +42,15 @@ export default function CheckoutForm(props) {
           Checkout
         </button>
         {props.success ? (
-          ((<p className="success">Success!</p>),
-          (<p>Receipt for {props.checkoutForm.name}:</p>),
-          (
+          <div>
+          <p className="success">Success!</p>
             <Receipt
               price={props.receiptPrice}
               isOpen={props.isOpen}
               products={props.products}
               shoppingCart={props.receiptList}
             ></Receipt>
-          ))
+            </div>
         ) : (
           <p className="error">
             We are sorry we could not load your checkout information at this

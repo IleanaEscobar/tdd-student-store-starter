@@ -9,12 +9,24 @@ export default function Home(props) {
   var arr_cat = Array.from(categories);
   arr_cat.push("all categories");
   const [usedProducts, setUsedProducts] = React.useState(props.products);
+  const [categoryClicked, setCategoryClicked] = React.useState(false);
+  const [currentCat, setCurrentCat] = React.useState("all categories");
 
-  if (props.categoryClicked) {
-    setUsedProducts(
-      props.products.filter((item) => item.category == props.currentCat)
-    );
+  function handleCategoryChange(cat) {
+    setCurrentCat(cat);
+    setCategoryClicked(cat != "all categories");
   }
+
+  React.useEffect(() => {
+    if (categoryClicked) {
+      setUsedProducts(
+        props.products.filter((item) => item.category == currentCat)
+      );
+    } else {
+      setUsedProducts(props.products);
+    }
+  }, [currentCat]);
+
   const handleSearchChange = (event) => {
     var inpt = event.target.value;
     setUsedProducts(
@@ -40,7 +52,7 @@ export default function Home(props) {
         {arr_cat.map((item, indx) => (
           <button
             onClick={() => {
-              props.handleCategoryChange(item);
+              handleCategoryChange(item);
             }}
             className="catButton"
             key={item}
