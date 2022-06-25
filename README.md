@@ -4,7 +4,9 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+Link: https://www.loom.com/share/80f7b6df004745a68532006d014d6b2c
+
+<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/80f7b6df004745a68532006d014d6b2c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Application Features
 
@@ -293,7 +295,7 @@ I think that if I had more time I would definitely want to polish up on the css 
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Demo to be done
+I think that for the amount of time I had and considering I had no prior experience with react, I'm proud of what I ackomplished. Compared to my other peers however, I would like to clean up the css and also include stretch features if I had the time.
 
 ### Open-source libraries used
 
