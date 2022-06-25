@@ -6,7 +6,6 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 Link: https://www.loom.com/share/80f7b6df004745a68532006d014d6b2c
 
-<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/80f7b6df004745a68532006d014d6b2c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Application Features
 
