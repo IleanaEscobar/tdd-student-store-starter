@@ -21,6 +21,8 @@ export default function App() {
   const [categoryClicked, setCategoryClicked] = React.useState(false);
   const [currentCat, setCurrentCat] = React.useState();
   const [price, setPrice] = React.useState(0);
+  const [receiptList, setReceiptList] = React.useState([])
+  const [receiptPrice, setReceiptPrice] = React.useState(0)
   // const [inCart, setInCart] = React.useState(false)
   //   The itemId field should store the id of the item being purchased.
   //   The quantity field should store a number representing how many of that item the user is purchasing.
@@ -155,6 +157,10 @@ export default function App() {
         user: { name: checkoutForm.name, email: checkoutForm.value },
         shoppingCart: shoppingCart,
       });
+      var s = shoppingCart
+      var p = price
+      setReceiptList(s)
+      setReceiptPrice(p)
       setPrice(0)
       setShoppingCart([]);
       setCheckoutForm({ name: "", value: 0 });
@@ -182,6 +188,8 @@ export default function App() {
           {/* <ProductDetail/> */}
           <Navbar />
           <Sidebar
+            receiptList={receiptList}
+            receiptPrice={receiptPrice}
             price={price}
             isOpen={isOpen}
             shoppingCart={shoppingCart}
@@ -227,15 +235,17 @@ export default function App() {
                 (<Navbar />),
                 (
                   <Sidebar
-                    // handleSearch={handleSearch}
-                    price={price}
-                    isOpen={isOpen}
-                    shoppingCart={shoppingCart}
-                    products={products}
-                    checkoutForm={checkoutForm}
-                    handleOnCheckoutFormChange={handleOnCheckoutFormChange}
-                    handleOnSubmitCheckoutFrom={handleOnSubmitCheckoutForm}
-                    handleOnToggle={handleOnToggle}
+                  receiptList={receiptList}
+                  receiptPrice={receiptPrice}
+                  price={price}
+                  isOpen={isOpen}
+                  shoppingCart={shoppingCart}
+                  products={products}
+                  checkoutForm={checkoutForm}
+                  handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                  handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                  handleOnToggle={handleOnToggle}
+                  success={success}
                   />
                 ))
               }
