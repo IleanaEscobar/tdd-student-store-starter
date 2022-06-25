@@ -2,11 +2,8 @@ import * as React from "react";
 import "./Home.css";
 import Hero from "../Hero/Hero";
 import ProductGrid from "../ProductGrid/ProductGrid";
-import { Link } from "react-router-dom";
 
 export default function Home(props) {
-  console.log("props: " + props.products)
-  // console.table(props.shoppingCart);
   var categories = new Set();
   props.products.map((item, indx) => categories.add(item.category));
   var arr_cat = Array.from(categories);
@@ -14,16 +11,17 @@ export default function Home(props) {
   const [usedProducts, setUsedProducts] = React.useState(props.products);
 
   if (props.categoryClicked) {
-    setUsedProducts(props.products.filter(
-      (item) => item.category == props.currentCat
-    ))
+    setUsedProducts(
+      props.products.filter((item) => item.category == props.currentCat)
+    );
   }
-  // props.handleSearchChange
   const handleSearchChange = (event) => {
     var inpt = event.target.value;
-    setUsedProducts(props.products.filter(
-      (item) => item.name.substring(0, inpt.length) == inpt
-    ))
+    setUsedProducts(
+      props.products.filter(
+        (item) => item.name.substring(0, inpt.length) == inpt
+      )
+    );
   };
 
   return (

@@ -1,14 +1,14 @@
 .product-card {
-    height: 300px;
-    margin: 50px;
-    color: #42C2FF;
+  height: 300px;
+  margin: 50px;
+  color: #42c2ff;
 }
 .product-quantity {
-    background-color: #B8FFF9;
-    color: #42C2FF;
-    width: 20px;
+  background-color: #b8fff9;
+  color: #42c2ff;
+  width: 20px;
 }
 
 .product-name {
-    color: #85F4FF;
+  color: #85f4ff;
 }

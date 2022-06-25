@@ -22,7 +22,6 @@ export default function CheckoutForm(props) {
   if (clicked) {
     return (
       <div className="checkout-form">
-        {/* emails and stuff */}
         <input
           onChange={handleCheckoutFormChange}
           className="checkout-form-input"
@@ -64,7 +63,6 @@ export default function CheckoutForm(props) {
   } else {
     return (
       <div className="checkout-form">
-        {/* emails and stuff */}
         <input
           onChange={handleCheckoutFormChange}
           className="checkout-form-input"

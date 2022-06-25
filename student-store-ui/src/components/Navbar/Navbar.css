@@ -1,14 +1,14 @@
 .navbar {
-    position:fixed;
-    background-color: #B8FFF9;
-    color: #42C2FF;
-    height: 50px;
-    width: 100%;
-    z-index: 10;
+  position: fixed;
+  background-color: #b8fff9;
+  color: #42c2ff;
+  height: 50px;
+  width: 100%;
+  z-index: 10;
 }
 
 a {
-  color:#42C2FF;
+  color: #42c2ff;
 }
 
 .header {

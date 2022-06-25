@@ -15,17 +15,12 @@ export default function App() {
   const [isFetching, setIsFetching] = React.useState(false);
   const [error, setError] = React.useState("");
   const [isOpen, setIsOpen] = React.useState(false);
-  // const [searchClicked, setSearchClicked] = React.useState(false);
-  // const [currentSearch, setCurrentSearch] = React.useState("default");
   const [success, setSuccess] = React.useState();
   const [categoryClicked, setCategoryClicked] = React.useState(false);
   const [currentCat, setCurrentCat] = React.useState();
   const [price, setPrice] = React.useState(0);
-  const [receiptList, setReceiptList] = React.useState([])
-  const [receiptPrice, setReceiptPrice] = React.useState(0)
-  // const [inCart, setInCart] = React.useState(false)
-  //   The itemId field should store the id of the item being purchased.
-  //   The quantity field should store a number representing how many of that item the user is purchasing.
+  const [receiptList, setReceiptList] = React.useState([]);
+  const [receiptPrice, setReceiptPrice] = React.useState(0);
   const [shoppingCart, setShoppingCart] = React.useState([]);
   const [checkoutForm, setCheckoutForm] = React.useState({
     name: "Fake Name",
@@ -36,7 +31,6 @@ export default function App() {
     try {
       async function fetchData() {
         const response = await axios(URL);
-        console.log(response.data.products);
         setProducts(response.data.products);
       }
 
@@ -52,15 +46,6 @@ export default function App() {
     setIsOpen(isOpen ? false : true);
   }
 
-  // function handleSearchChange(search) {
-  //   if (search != "default") {
-  //     setSearchClicked(true);
-  //     setCurrentSearch(search);
-  //   } else {
-  //     setSearchClicked(false);
-  //   }
-  // }
-
   function handleCategoryChange(cat) {
     if (cat != "all categories") {
       setCategoryClicked(true);
@@ -70,13 +55,9 @@ export default function App() {
     }
   }
 
-  // Add price
-
   function handleAddItemToCart(productId) {
     var product = products.find((item) => item.id == productId);
-    console.log("price " + price);
     setPrice(price + product.price);
-    console.log("price " + price);
     let quantity = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {
@@ -142,50 +123,34 @@ export default function App() {
 
   function handleOnCheckoutFormChange(name, value) {
     setCheckoutForm({ name: name, value: value });
-    console.log("checkOut = " + checkoutForm.name + " " + checkoutForm.value);
   }
 
-  // important :)
-  if(products.length==0) {
-    return <div>Loading...</div>
+  if (products.length == 0) {
+    return <div>Loading...</div>;
   }
 
   async function handleOnSubmitCheckoutForm() {
-    console.log(checkoutForm.value);
     try {
       await axios.post(URL, {
         user: { name: checkoutForm.name, email: checkoutForm.value },
         shoppingCart: shoppingCart,
       });
-      var s = shoppingCart
-      var p = price
-      setReceiptList(s)
-      setReceiptPrice(p)
-      setPrice(0)
+      var s = shoppingCart;
+      var p = price;
+      setReceiptList(s);
+      setReceiptPrice(p);
+      setPrice(0);
       setShoppingCart([]);
       setCheckoutForm({ name: "", value: 0 });
       setSuccess(true);
-      // return(
-      //   <p className="success">Success!</p>
-      // )
     } catch (e) {
       console.log(e);
-      console.log("error");
     }
-    // return <p className="error">We're sorry we had trouble loading your checkout:(.</p>
   }
-
-  // async function handleSearch() {
-  //   try {
-
-  //   }
-  // }
   return (
     <div className="app">
       <BrowserRouter>
         <main>
-          {/* YOUR CODE HERE! */}
-          {/* <ProductDetail/> */}
           <Navbar />
           <Sidebar
             receiptList={receiptList}
@@ -205,9 +170,6 @@ export default function App() {
               path="/"
               element={
                 <Home
-                  // handleSearchChange={handleSearchChange}
-                  // searchClicked={searchClicked}
-                  // currentSearch={currentSearch}
                   currentCat={currentCat}
                   categoryClicked={categoryClicked}
                   handleCategoryChange={handleCategoryChange}
@@ -227,7 +189,6 @@ export default function App() {
                 />
               }
             />
-            {/* <NotFound/> */}
             <Route
               path="*"
               element={
@@ -235,17 +196,17 @@ export default function App() {
                 (<Navbar />),
                 (
                   <Sidebar
-                  receiptList={receiptList}
-                  receiptPrice={receiptPrice}
-                  price={price}
-                  isOpen={isOpen}
-                  shoppingCart={shoppingCart}
-                  products={products}
-                  checkoutForm={checkoutForm}
-                  handleOnCheckoutFormChange={handleOnCheckoutFormChange}
-                  handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
-                  handleOnToggle={handleOnToggle}
-                  success={success}
+                    receiptList={receiptList}
+                    receiptPrice={receiptPrice}
+                    price={price}
+                    isOpen={isOpen}
+                    shoppingCart={shoppingCart}
+                    products={products}
+                    checkoutForm={checkoutForm}
+                    handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                    handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                    handleOnToggle={handleOnToggle}
+                    success={success}
                   />
                 ))
               }

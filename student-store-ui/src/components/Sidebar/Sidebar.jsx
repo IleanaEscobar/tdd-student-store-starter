@@ -4,10 +4,8 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 export default function Sidebar(props) {
-  // console.log("price here side:" + props.price);
   return (
     <section className="sidebar">
-      {/* <p>Sidebar</p> */}
       <button
         onClick={props.handleOnToggle}
         className="toggle-button"
@@ -15,7 +13,6 @@ export default function Sidebar(props) {
       >
         Sidebar
       </button>
-      {/* <input onClick={props.handleSearch} className="search-bar" type="submit">Search...</input> */}
       {props.isOpen ? (
         <div className="forms">
           <ShoppingCart
