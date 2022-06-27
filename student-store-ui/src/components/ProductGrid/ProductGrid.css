@@ -1,9 +1,8 @@
 .product-grid {
-    display:grid;
-    color: white;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    grid-gap: 10px;
-    margin-left: 142px;
-    /* z-index: -200; */
+  display: grid;
+  color: white;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+  margin-left: 142px;
 }
