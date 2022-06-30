@@ -29,6 +29,19 @@ router.get("/:productId", async (req, res, next) => {
     }
   })
 
+  router.post("/", async (req, res, next) => {
+    console.log('hi hoe')
+    try {
+      const purchase = req.body.purchase
+      console.log(purchase)
+      const newPurchase = await StoreModel.createPurchaseOrder(purchase)
+      res.status(201).json({ "purchase" : newPurchase })
+    } catch (err) {
+      next(err)
+    }
+  })
+  // router.post()
+
 // router.get('/:productId', async (req, res, next) => {
 //     const names = req.body.names;
 

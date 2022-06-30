@@ -1,36 +1,86 @@
-const { storage } = require("../data/storage")
+const { storage } = require('../data/storage')
 
 
 class Store {
-    // List all products currently in the db.json file
-    // Fetch a single product by its id
-    // Create a purchase order
-
-    // static async listTransactions() {
-    //     // list all items in the transactions array
-    //     const transactions = storage.get("transactions").value()
-    //     return transactions
-    //   }
     static async listProducts() {
-        const products = storage.get("products").value()
+        const products = storage.get('products').value()
         return products
     }
 
     static async fetchProductById(productId) {
         const product = storage
-        .get("products")
+        .get('products')
         .find({ id: Number(productId) })
         .value()
         return product
     }
 
-    // static fetch(key) {
-    //     return storage.get(key)
-    // }
+  static async createPurchaseOrder(purchase) {
+    // create a new purchase
 
-    // static purchaseOrder() {
+    if (!purchase) {
+      throw new Error('No purchase made.');
+    }
+    const requiredFields = ['shoppingCart', 'user'];
 
-    // }
+    requiredFields.forEach((field) => {
+      if (!purchase[field]) {
+        throw new Error(`Field: "${field}" is required in purchase.`);
+      }
+    });
+
+    // console.log("nvdg dshgsidsig dius sdig si idgh di gdig di gdfi gdifdh ")
+    console.log(requiredFields)
+    if (!Array.isArray(purchase.shoppingCart)) {
+      throw new Error('ShoppingCart is required to be an array.');
+    }
+    const filteredShoppingCart = purchase.shoppingCart.filter((item) => {
+      if (
+        typeof item === 'object'
+        && item.hasOwnProperty('itemId')
+        && item.hasOwnProperty('quantity')
+      ) {
+        return true;
+      }
+    });
+    if (purchase.shoppingCart.length !== filteredShoppingCart.length) {
+      console.log(purchase.shoppingCart)
+      throw new Error(
+        'Shopping cart must be an array of object with an itemId and quantity field.'
+      );
+    }
+    if (!purchase.user.hasOwnProperty('name') || !purchase.user.hasOwnProperty('email')) {
+      throw new Error('User must have name and email property');
+    }
+
+    const purchaseId = storage.get("purchases").length + 1
+    const createdAt = new Date().toISOString()
+    var currentItem = 0
+    var currentProd = {}
+    var total = 0
+    for (let i = 0; i < purchase.shoppingCart.length; i++) {
+      currentItem = purchase.shoppingCart[i].itemId
+      console.log("currentItem: " + currentItem)
+      currentProd = await Store.fetchProductById(currentItem)
+      console.log("currentProd: " + purchase.shoppingCart[i].quantity)
+      total += currentProd.price * purchase.shoppingCart[i].quantity
+      console.log("total: " + total)
+    }
+    total = total * 1.0875
+
+    const newPurchase ={
+      id: purchaseId,
+      name: purchase.user.name,
+      email: purchase.user.email,
+      order: purchase.shoppingCart,
+      total: total,
+      createdAt: createdAt
+    }
+
+    storage.get("purchases").push(newPurchase).write()
+    return newPurchase
+
+}
 }
 
 module.exports = Store;

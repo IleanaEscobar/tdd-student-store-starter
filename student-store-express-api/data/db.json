@@ -145,5 +145,71 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": null,
+      "name": "hehe smith",
+      "email": "hehe@gmail.com",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 2.15325,
+      "createdAt": "2022-06-30T23:15:33.651Z"
+    },
+    {
+      "id": null,
+      "name": "hehe smith",
+      "email": "hehe@gmail.com",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 2.15325,
+      "createdAt": "2022-06-30T23:15:38.208Z"
+    },
+    {
+      "id": null,
+      "name": "hehe smith",
+      "email": "hehe@gmail.com",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 2.15325,
+      "createdAt": "2022-06-30T23:15:40.669Z"
+    },
+    {
+      "id": null,
+      "name": "hehe smith",
+      "email": "hehe@gmail.com",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 2.15325,
+      "createdAt": "2022-06-30T23:15:44.396Z"
+    },
+    {
+      "id": null,
+      "name": "hehe smith",
+      "email": "hehe@gmail.com",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 2
+        }
+      ],
+      "total": 2.15325,
+      "createdAt": "2022-06-30T23:15:44.553Z"
+    }
+  ]
 }
