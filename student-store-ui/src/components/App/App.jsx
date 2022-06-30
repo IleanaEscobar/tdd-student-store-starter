@@ -119,6 +119,7 @@ export default function App() {
 
   async function handleOnSubmitCheckoutForm() {
     try {
+      // console.log("checkout things")
       await axios.post(URL, {
         user: { name: checkoutForm.name, email: checkoutForm.value },
         shoppingCart: shoppingCart,

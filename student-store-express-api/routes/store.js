@@ -32,28 +32,13 @@ router.get("/:productId", async (req, res, next) => {
   router.post("/", async (req, res, next) => {
     console.log('hi hoe')
     try {
-      const purchase = req.body.purchase
-      console.log(purchase)
+      const purchase = req.body
+      console.log(" purchase: " + purchase)
       const newPurchase = await StoreModel.createPurchaseOrder(purchase)
       res.status(201).json({ "purchase" : newPurchase })
     } catch (err) {
       next(err)
     }
   })
-  // router.post()
-
-// router.get('/:productId', async (req, res, next) => {
-//     const names = req.body.names;
-
-//     console.log("Router Working: " + names);
-//     const arr = GiftExchangeModel.traditional(names)
-//     res.status(200).send(arr);
-// })
 
 module.exports = router
-// app.use(router);
-
-// app.listen(PORT, function(err){
-//     if (err) console.log(err);
-//     console.log("Server listening on PORT", PORT);
-// });

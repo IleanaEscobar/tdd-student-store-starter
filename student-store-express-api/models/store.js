@@ -30,7 +30,7 @@ class Store {
     });
 
     // console.log("nvdg dshgsidsig dius sdig si idgh di gdig di gdfi gdifdh ")
-    console.log(requiredFields)
+    // console.log(" req: " + requiredFields)
     if (!Array.isArray(purchase.shoppingCart)) {
       throw new Error('ShoppingCart is required to be an array.');
     }
@@ -44,7 +44,7 @@ class Store {
       }
     });
     if (purchase.shoppingCart.length !== filteredShoppingCart.length) {
-      console.log(purchase.shoppingCart)
+      // console.log(purchase.shoppingCart)
       throw new Error(
         'Shopping cart must be an array of object with an itemId and quantity field.'
       );
@@ -60,11 +60,11 @@ class Store {
     var total = 0
     for (let i = 0; i < purchase.shoppingCart.length; i++) {
       currentItem = purchase.shoppingCart[i].itemId
-      console.log("currentItem: " + currentItem)
+      // console.log("currentItem: " + currentItem)
       currentProd = await Store.fetchProductById(currentItem)
-      console.log("currentProd: " + purchase.shoppingCart[i].quantity)
+      // console.log("currentProd: " + purchase.shoppingCart[i].quantity)
       total += currentProd.price * purchase.shoppingCart[i].quantity
-      console.log("total: " + total)
+      // console.log("total: " + total)
     }
     total = total * 1.0875
 
