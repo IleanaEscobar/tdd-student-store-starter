@@ -243,21 +243,21 @@ The following specifications were met on the Express backend and the React front
         - [x] The `checkoutForm` should be reset to its default state.
 
 **Server** - Create an Express server
-  - [ ] Wire up the appropriate middleware and error handlers in the `app.js` file
-  - [ ] Create a single `GET` request handler at the `/` endpoint. It should respond to all `GET` requests with a JSON object and a `200` status code. The JSON response should contain a single key of `ping` that stores the string value: `pong`. For example: `{ "ping": "pong" }`.
-  - [ ] Have a `server.js` file that starts the app by listening on port `3001`.
+  - [x] Wire up the appropriate middleware and error handlers in the `app.js` file
+  - [x] Create a single `GET` request handler at the `/` endpoint. It should respond to all `GET` requests with a JSON object and a `200` status code. The JSON response should contain a single key of `ping` that stores the string value: `pong`. For example: `{ "ping": "pong" }`.
+  - [x] Have a `server.js` file that starts the app by listening on port `3001`.
 
 **Models** - The API should use a `Store` model that handles the following
-  - [ ] List all products currently in the `db.json` file
-  - [ ] Fetch a single product by its id
+  - [x] List all products currently in the `db.json` file
+  - [x] Fetch a single product by its id
   - [ ] Create a purchase order
 
 **Routes** - The API should contain a route mounted at the `/store` endpoint
-  - [ ] It should respond to `GET` requests to `/store` with an array of all products in the store in this format: `{ "products": products }`
-  - [ ] It should respond to `GET` requests to `/store/:productId` with a single product based on the product's id using this JSON format: `{ "product": product }`
+  - [x] It should respond to `GET` requests to `/store` with an array of all products in the store in this format: `{ "products": products }`
+  - [x] It should respond to `GET` requests to `/store/:productId` with a single product based on the product's id using this JSON format: `{ "product": product }`
   - [ ] It should allow `POST` requests to the `/store` endpoint:
-    - [ ] The endpoint should create purchase orders for users and save them to the `db.json` file
-    - [ ] The endpoint should accept a request body that contains `shoppingCart` and `user` fields.
+    - [x] The endpoint should create purchase orders for users and save them to the `db.json` file
+    - [x] The endpoint should accept a request body that contains `shoppingCart` and `user` fields.
       - [ ] The `shoppingCart` field should contain the user's order.
         - [ ] This should be an array of objects.
         - [ ] Each object in the array should have two fields:
