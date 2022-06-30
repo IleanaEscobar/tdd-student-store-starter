@@ -258,27 +258,27 @@ The following specifications were met on the Express backend and the React front
   - [ ] It should allow `POST` requests to the `/store` endpoint:
     - [x] The endpoint should create purchase orders for users and save them to the `db.json` file
     - [x] The endpoint should accept a request body that contains `shoppingCart` and `user` fields.
-      - [ ] The `shoppingCart` field should contain the user's order.
-        - [ ] This should be an array of objects.
-        - [ ] Each object in the array should have two fields:
-          <!-- - [ ] The `item` field should store an object of the item being purchased -->
-          - [ ] The `itemId` field should store the `id` of the item being purchased
-          - [ ] The `quantity` field should store a number representing how many of that item the user is purchasing.
-      - [ ] The `user` field should contain the name and email of the person placing the order.
-      - [ ] When either the `shoppingCart` or `user` fields are missing, it should throw a `400` error.
-      - [ ] If there are duplicate items in the `shoppingCart`, it should throw a `400` error.
-      - [ ] If either the `quantity` or `itemId` field is missing for any of the items in the `shoppingCart`, a `400` error should be thrown.
-      - [ ] When both are there, it should calculate the total cost of all the items (including quantities), add a `8.75%` tax to the total, and create a new purchase object containing 6 required fields and 1 optional field:
+      - [x] The `shoppingCart` field should contain the user's order.
+        - [x] This should be an array of objects.
+        - [x] Each object in the array should have two fields:
+          <!-- - [x] The `item` field should store an object of the item being purchased -->
+          - [x] The `itemId` field should store the `id` of the item being purchased
+          - [x] The `quantity` field should store a number representing how many of that item the user is purchasing.
+      - [x] The `user` field should contain the name and email of the person placing the order.
+      - [x] When either the `shoppingCart` or `user` fields are missing, it should throw a `400` error.
+      - [x] If there are duplicate items in the `shoppingCart`, it should throw a `400` error.
+      - [x] If either the `quantity` or `itemId` field is missing for any of the items in the `shoppingCart`, a `400` error should be thrown.
+      - [x] When both are there, it should calculate the total cost of all the items (including quantities), add a `8.75%` tax to the total, and create a new purchase object containing 6 required fields and 1 optional field:
         - **required**:
-          - [ ] `id` - the new `id` of the purchase should be equal to one more than the current number of existing purchases
-          - [ ] `name` - the name of the user making the purchase
-          - [ ] `email` - the email of the user making the purchase
-          - [ ] `order` - the `shoppingCart` value sent in the `POST` request
-          - [ ] `total` - the calculated total of the order
-          - [ ] `createdAt` - a string representation of the date and time when the order was placed
+          - [x] `id` - the new `id` of the purchase should be equal to one more than the current number of existing purchases
+          - [x] `name` - the name of the user making the purchase
+          - [x] `email` - the email of the user making the purchase
+          - [x] `order` - the `shoppingCart` value sent in the `POST` request
+          - [x] `total` - the calculated total of the order
+          - [x] `createdAt` - a string representation of the date and time when the order was placed
         - **optional**:
           - [ ] `receipt` - text describing the order (what might go on a receipt)
-      - [ ] It should then send a JSON response back to the client with the new purchase like so: `{ "purchase": purchase }`. The response should have a `201` status code for a resource created action.
+      - [x] It should then send a JSON response back to the client with the new purchase like so: `{ "purchase": purchase }`. The response should have a `201` status code for a resource created action.
 
 ---
 
