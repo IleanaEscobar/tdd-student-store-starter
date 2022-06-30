@@ -8,7 +8,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, renderMatches } from "react-router-dom";
 import axios from "axios";
 
-const URL = "https://codepath-store-api.herokuapp.com/store";
+const URL = "http://localhost:3001/store";
 
 export default function App() {
   const [products, setProducts] = React.useState([]);

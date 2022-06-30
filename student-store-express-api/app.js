@@ -3,9 +3,12 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const store = require('./routes/store')
+const cors = require("cors")
 
 app.use(bodyParser.json());
+app.use(cors())
 app.use(morgan('tiny'))
+
 app.use('/store', store)
 
 // Mount the router to the Express application at the /gift-exchange endpoint.
