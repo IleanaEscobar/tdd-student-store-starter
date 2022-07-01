@@ -1,4 +1,5 @@
 const { storage } = require('../data/storage')
+const Errors = require('../utils/errors')
 
 
 class Store {
@@ -29,8 +30,6 @@ class Store {
       }
     });
 
-    // console.log("nvdg dshgsidsig dius sdig si idgh di gdig di gdfi gdifdh ")
-    // console.log(" req: " + requiredFields)
     if (!Array.isArray(purchase.shoppingCart)) {
       throw new Error('ShoppingCart is required to be an array.');
     }
@@ -45,12 +44,10 @@ class Store {
     });
     if (purchase.shoppingCart.length !== filteredShoppingCart.length) {
       // console.log(purchase.shoppingCart)
-      throw new Error(
-        'Shopping cart must be an array of object with an itemId and quantity field.'
-      );
+      throw new Errors.BadRequestError()
     }
     if (!purchase.user.hasOwnProperty('name') || !purchase.user.hasOwnProperty('email')) {
-      throw new Error('User must have name and email property');
+      throw new Errors.BadRequestError();
     }
 
     const purchaseId = storage.get("purchases").length + 1

@@ -227,6 +227,27 @@
       ],
       "total": 13.02825,
       "createdAt": "2022-06-30T23:37:04.520Z"
+    },
+    {
+      "id": null,
+      "name": "Fake Name",
+      "email": "example@email.com",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 3
+        },
+        {
+          "itemId": 4,
+          "quantity": 3
+        },
+        {
+          "itemId": 7,
+          "quantity": 4
+        }
+      ],
+      "total": 42.064499999999995,
+      "createdAt": "2022-07-01T01:05:54.738Z"
     }
   ]
 }
